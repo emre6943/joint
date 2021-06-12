@@ -5,7 +5,8 @@ using UnityEngine;
 public class HandController : MonoBehaviour
 {
     public GameObject old_hand;
-    public GameObject hand;
+    public GameObject left_hand;
+    public GameObject right_hand;
 
     public float xPosLeft;
     public float xPosRight;
@@ -20,7 +21,7 @@ public class HandController : MonoBehaviour
     void Start()
     {
         float yPos = NextFloat(yMin, yMax);
-        old_hand = Instantiate(hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
+        old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
         left = false;
     }
 
@@ -41,12 +42,12 @@ public class HandController : MonoBehaviour
             if (left)
             {
                 left = false;
-                old_hand = Instantiate(hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
+                old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
             }
             else
             {
                 left = true;
-                old_hand = Instantiate(hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
+                old_hand = Instantiate(left_hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
             }
         }
         
