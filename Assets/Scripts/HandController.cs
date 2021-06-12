@@ -35,6 +35,7 @@ public class HandController : MonoBehaviour
     {
         if (col.gameObject.tag == "Hand") {
             Destroy(old_hand);
+            GameManager.instance.addPass();
             float yPos = NextFloat(yMin, yMax);
 
             if (left)
