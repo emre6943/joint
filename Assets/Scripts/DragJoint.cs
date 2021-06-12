@@ -48,7 +48,6 @@ public class DragJoint : MonoBehaviour
         rigidbody.velocity = force;
         if (rigidbody.velocity.magnitude > topSpeed)
             force = rigidbody.velocity.normalized * topSpeed;
-        mousePreviousLocation = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObjectSreenPoint.z);
     }
 
 }
