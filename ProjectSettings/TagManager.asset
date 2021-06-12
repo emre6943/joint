@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hand
+  - Ash
+  - Fire
+  - Wall
+  - Tray
+  - Health
+  - Enemy
   layers:
   - Default
   - TransparentFX
