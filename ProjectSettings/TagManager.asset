@@ -11,6 +11,8 @@ TagManager:
   - Tray
   - Health
   - Enemy
+  - AshEnd
+  - SplitLoc
   layers:
   - Default
   - TransparentFX

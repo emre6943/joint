@@ -1,26 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Joint : MonoBehaviour
 {
-    public List<GameObject> kuls = new List<GameObject>();
+    [HideInInspector] public static Joint instance;
+    
+    public List<GameObject> ashes = new List<GameObject>();
 
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SeperateKul();
-        }
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
     }
-
-    private void SeperateKul()
+    
+    public void SplitAsh()
     {
-        GameObject kul = kuls[0];
-        kuls.RemoveAt(0);
-        kul.transform.parent = null;
-        StartCoroutine(WaitForRb(kul, 0.1f));
+        GameObject ash = ashes[0];
+        ashes.RemoveAt(0);
+        ash.transform.parent = null;
+        StartCoroutine(WaitForRb(ash, 0.1f));
     }
 
     private IEnumerator WaitForRb(GameObject kul, float time)
