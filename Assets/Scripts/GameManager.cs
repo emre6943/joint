@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public float start_time;
 
+    public bool paused;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -23,9 +25,31 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void Start()
+    private void Start()
     {
         start_time = Time.time;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseGame();
+        }
+    }
+
+    public void PauseGame()
+    {
+        if (paused)
+        {
+            paused = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            paused = true;
+            Time.timeScale = 0;
+        }
     }
 
     public void addAsh() {
@@ -41,4 +65,6 @@ public class GameManager : MonoBehaviour
     {
         return (int)(System.Math.Round(Time.time - start_time) * time_weight + (pass * pass_weight) + (ash_weight * ash)); 
     }
+    
+    
 }

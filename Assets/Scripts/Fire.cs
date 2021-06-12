@@ -19,16 +19,10 @@ public class Fire : MonoBehaviour
 
     private void Update()
     {
-        originalDiff -= moveSpeed;
         transform.position = new Vector3(endPosition.position.x, endPosition.position.y + originalDiff, 0);
+        originalDiff -= moveSpeed;
     }
 
-    // private IEnumerator WaitForFireStart()
-    // {
-    //     yield return new WaitForSeconds(2f);
-    //     fireStarted = true;
-    // }
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "SplitLoc")

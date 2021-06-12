@@ -9,25 +9,57 @@ public class Joint : MonoBehaviour
     [HideInInspector] public static Joint instance;
     
     public List<GameObject> ashes = new List<GameObject>();
+    public List<GameObject> splitted_ashes = new List<GameObject>();
+
+    private int top_ash_index = 0;
+    private int max_ash_number;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
-    }
-    
-    public void SplitAsh()
-    {
-        GameObject ash = ashes[0];
-        ashes.RemoveAt(0);
-        ash.transform.parent = null;
-        StartCoroutine(WaitForRb(ash, 0.1f));
+
+        max_ash_number = ashes.Count;
     }
 
-    private IEnumerator WaitForRb(GameObject kul, float time)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SplitAsh();
+        }
+    }
+
+    public void SplitAsh()
+    {
+        GameObject ash = ashes[top_ash_index];
+        top_ash_index++;
+        GameObject ashClone = Instantiate(ash, ash.transform.position, Quaternion.identity);     
+        splitted_ashes.Add(ashClone);
+        ash.SetActive(false);
+        StartCoroutine(WaitForRb(ashClone, 0.05f));
+    }
+
+    public void RefillAsh()
+    {
+        top_ash_index = 0;
+        
+        for (int i = 0; i < ashes.Count; i++)
+        {
+            if (!ashes[i].activeSelf) ashes[i].SetActive(true);
+        }
+
+        foreach (var ash in splitted_ashes)
+        {
+            Destroy(ash);
+        }
+    }
+
+    private IEnumerator WaitForRb(GameObject ash, float time)
     {
         yield return new WaitForSeconds(time);
-        Rigidbody2D rb = kul.AddComponent<Rigidbody2D>();
+        if (ash == null) yield return null;
+        Rigidbody2D rb = ash.AddComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.gravityScale = 1f;
         rb.angularDrag = 5;
