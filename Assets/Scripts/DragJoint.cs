@@ -6,6 +6,12 @@ public class DragJoint : MonoBehaviour
 {
     private Vector3 mOffset;
     private float mZCoord;
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void onMouseDown()
     {
@@ -26,6 +32,8 @@ public class DragJoint : MonoBehaviour
         Vector3 pose = GetMouseWorldPos();
         pose.z = 0;
         transform.position = pose + mOffset;
+        rb.velocity = new Vector2(0, 0);
+        
     }
 
 }
