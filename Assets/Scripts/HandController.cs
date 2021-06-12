@@ -33,18 +33,21 @@ public class HandController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(old_hand);
-        float yPos = NextFloat(yMin, yMax);
+        if (col.gameObject.tag == "Hand") {
+            Destroy(old_hand);
+            float yPos = NextFloat(yMin, yMax);
 
-        if (left)
-        {
-            left = false;
-            old_hand = Instantiate(hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
+            if (left)
+            {
+                left = false;
+                old_hand = Instantiate(hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
+            }
+            else
+            {
+                left = true;
+                old_hand = Instantiate(hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
+            }
         }
-        else
-        {
-            left = true;
-            old_hand = Instantiate(hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
-        }
+        
     }
 }
