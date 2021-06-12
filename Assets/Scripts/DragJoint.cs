@@ -4,36 +4,46 @@ using UnityEngine;
 
 public class DragJoint : MonoBehaviour
 {
-    private Vector3 mOffset;
-    private float mZCoord;
-    private Rigidbody2D rb;
+    public Vector3 gameObjectSreenPoint;
+    public Vector3 mousePreviousLocation;
+    public Vector3 mouseCurLocation;
+
+    private Rigidbody2D rigidbody;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    void onMouseDown()
+    void OnMouseDown()
     {
-        mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        mOffset = gameObject.transform.position - GetMouseWorldPos();
-        mOffset.z = 0;
+        //This grabs the position of the object in the world and turns it into the position on the screen
+        gameObjectSreenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+        //Sets the mouse pointers vector3
+        mousePreviousLocation = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObjectSreenPoint.z);
     }
 
-    Vector3 GetMouseWorldPos()
-    {
-        Vector3 mousePoint = Input.mousePosition;
-        mousePoint.z = 0;
-        return Camera.main.ScreenToWorldPoint(mousePoint);
-    }
-
+    public Vector3 force;
+    public Vector3 objectCurrentPosition;
+    public Vector3 objectTargetPosition;
+    public float topSpeed = 10;
     void OnMouseDrag()
     {
-        Vector3 pose = GetMouseWorldPos();
-        pose.z = 0;
-        transform.position = pose + mOffset;
-        rb.velocity = new Vector2(0, 0);
-        
+        mouseCurLocation = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObjectSreenPoint.z);
+        force = mouseCurLocation - mousePreviousLocation;//Changes the force to be applied
+        mousePreviousLocation = mouseCurLocation;
+    }
+
+    public void OnMouseUp()
+    {
+        //Makes sure there isn't a ludicrous speed
+        if (rigidbody.velocity.magnitude > topSpeed)
+            force = rigidbody.velocity.normalized * topSpeed;
+    }
+
+    public void FixedUpdate()
+    {
+        rigidbody.velocity = force;
     }
 
 }
