@@ -43,42 +43,4 @@ public class Refresh : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
-    // private void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     if (other.gameObject.tag == "Ash")
-    //     {
-    //         Ash ash = other.gameObject.GetComponent<Ash>();
-    //
-    //         if (!ash.isConnected) return;
-    //         
-    //         Joint.instance.RefillAsh();
-    //         
-    //         Destroy(gameObject);
-    //     }
-    // }
-
-    // void OnTriggerEnter2D(Collider2D col)
-    // {
-    //     if (col.gameObject.tag == "Health")
-    //     {
-    //         Destroy(col.gameObject);
-    //
-    //         Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-    //
-    //         // Instantiate(joint, pos, Quaternion.identity);
-    //         //
-    //         // Destroy(gameObject);
-    //         StartCoroutine(WaitForInstantiate(pos));
-    //     }
-    //     
-    // }
-    //
-    // private IEnumerator WaitForInstantiate(Vector3 pos)
-    // {
-    //     Instantiate(joint, pos, Quaternion.identity);
-    //     yield return new WaitForSeconds(2f);
-    //     Debug.Log("Instantiated");
-    //     Destroy(gameObject);
-    //
-    // }
 }
