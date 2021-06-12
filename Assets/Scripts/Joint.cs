@@ -20,7 +20,7 @@ public class Joint : MonoBehaviour
         GameObject kul = kuls[0];
         kuls.RemoveAt(0);
         kul.transform.parent = null;
-        StartCoroutine(WaitForRb(kul, 0.5f));
+        StartCoroutine(WaitForRb(kul, 0.1f));
     }
 
     private IEnumerator WaitForRb(GameObject kul, float time)
@@ -28,7 +28,7 @@ public class Joint : MonoBehaviour
         yield return new WaitForSeconds(time);
         Rigidbody2D rb = kul.AddComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        rb.gravityScale = 0.1f;
+        rb.gravityScale = 1f;
         rb.angularDrag = 5;
         rb.drag = 5;
     }
