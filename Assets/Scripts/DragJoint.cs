@@ -21,29 +21,34 @@ public class DragJoint : MonoBehaviour
         gameObjectSreenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         //Sets the mouse pointers vector3
         mousePreviousLocation = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObjectSreenPoint.z);
+        rigidbody.isKinematic = true;
     }
 
     public Vector3 force;
     public Vector3 objectCurrentPosition;
     public Vector3 objectTargetPosition;
     public float topSpeed = 10;
+    public int power = 5;
+
     void OnMouseDrag()
     {
         mouseCurLocation = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObjectSreenPoint.z);
-        force = mouseCurLocation - mousePreviousLocation;//Changes the force to be applied
+        force = (mouseCurLocation - mousePreviousLocation) * power;//Changes the force to be applied
         mousePreviousLocation = mouseCurLocation;
     }
 
     public void OnMouseUp()
     {
-        //Makes sure there isn't a ludicrous speed
-        if (rigidbody.velocity.magnitude > topSpeed)
-            force = rigidbody.velocity.normalized * topSpeed;
+        force = new Vector3(0, 0, 0);
+        rigidbody.isKinematic = false;
     }
 
     public void FixedUpdate()
     {
         rigidbody.velocity = force;
+        if (rigidbody.velocity.magnitude > topSpeed)
+            force = rigidbody.velocity.normalized * topSpeed;
+        mousePreviousLocation = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObjectSreenPoint.z);
     }
 
 }
