@@ -27,10 +27,6 @@ public class Joint : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SplitAsh();
-        }
         if (top_ash_index >= 8) {
             GameManager.instance.GameOver();
         }
