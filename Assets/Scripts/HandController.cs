@@ -54,30 +54,4 @@ public class HandController : MonoBehaviour
             old_hand = Instantiate(left_hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
         }
     }
-    
-    
-    // private bool passed;
-    // void OnTriggerEnter2D(Collider2D col)
-    // {
-    //     if (col.tag == "Hand" && !passed)
-    //     {
-    //         passed = true;
-    //
-    //         Destroy(old_hand);
-    //         
-    //         GameManager.instance.addPass();
-    //         float yPos = NextFloat(yMin, yMax);
-    //
-    //         if (left)
-    //         {
-    //             left = false;
-    //             old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
-    //         }
-    //         else
-    //         {
-    //             left = true;
-    //             old_hand = Instantiate(left_hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
-    //         }
-    //     }
-    // }
 }
