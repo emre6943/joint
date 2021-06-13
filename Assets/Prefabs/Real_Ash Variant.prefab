@@ -88,6 +88,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Real_Ash Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 744650675765645830, guid: 2d7bea9009760e04ca322c84597ab739,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.30101833
+      objectReference: {fileID: 0}
+    - target: {fileID: 744650675765645830, guid: 2d7bea9009760e04ca322c84597ab739,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.31924534
+      objectReference: {fileID: 0}
     - target: {fileID: 2089734314022971261, guid: 2d7bea9009760e04ca322c84597ab739,
         type: 3}
       propertyPath: m_IsActive

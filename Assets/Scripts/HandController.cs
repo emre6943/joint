@@ -28,9 +28,6 @@ public class HandController : MonoBehaviour
 
     private void Start()
     {
-        float yPos = NextFloat(yMin, yMax);
-        old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
-        left = false;
 
         var top_left = new Vector3(0, Screen.height, 0);
         top_left = Camera.main.ScreenToWorldPoint(top_left);
@@ -41,6 +38,10 @@ public class HandController : MonoBehaviour
         xPosRight = bottom_right.x - offset;
         yMin = bottom_right.y + offset;
         yMax = top_left.y - offset;
+
+        float yPos = NextFloat(yMin, yMax);
+        old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
+        left = false;
     }
 
     private static float NextFloat(float min, float max)

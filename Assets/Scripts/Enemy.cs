@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
         if (col.gameObject.tag == "Fire")
         {
             GameManager.instance.GameOver();
+            Destroy(gameObject);
         }
 
     }
