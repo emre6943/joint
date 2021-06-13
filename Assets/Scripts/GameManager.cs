@@ -41,9 +41,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (gameOver) return;
+        
         gameOver = true;
         GUIManager.instance.SetGameOver();
-        Time.timeScale = 0f;
     }
 
     public void PauseGame()
@@ -74,8 +75,16 @@ public class GameManager : MonoBehaviour
 
     public int GetScore() 
     {
-        return (int)(System.Math.Round(Time.time - start_time) * time_weight + (pass * pass_weight) + (ash_weight * ash)); 
+        int score = (int)(System.Math.Round(Time.time - start_time) * time_weight + (pass * pass_weight) + (ash_weight * ash));
+        SaveScore(score);
+        return score;
     }
-    
-    
+
+    private void SaveScore(int score)
+    {
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", Mathf.Max(PlayerPrefs.GetInt("HighScore"), score));
+        }
+    }
 }

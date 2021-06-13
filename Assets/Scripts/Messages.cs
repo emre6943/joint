@@ -15,6 +15,8 @@ public static class Messages
         "Did you forget your score xd:)",
         "Dont use weed BOI's...",
         "Perfect score :)",
-        "Do you remember 1 minute ago..."
+        "Do you remember 1 minute ago?",
+        "HAHAHAHAHAHAHAHAH",
+        "Too Bad :("
     };
 }

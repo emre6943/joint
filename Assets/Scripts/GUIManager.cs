@@ -67,6 +67,12 @@ public class GUIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void MenuButton()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void SetGameOver()
     {
         scorePanel.SetActive(false);
@@ -75,10 +81,12 @@ public class GUIManager : MonoBehaviour
         
         SetMessage();
 
-        scoreText.text = "SCORE: " + GameManager.instance.currentTime + " * " + GameManager.instance.time_weight +
+        scoreText.text = "SCORE: " + GameManager.instance.currentTime.ToString("F1") + " * " + GameManager.instance.time_weight +
                          " + " + GameManager.instance.pass + " * "
                          + GameManager.instance.pass_weight + " + " + GameManager.instance.ash + " * " +
                          GameManager.instance.ash_weight + " = " + GameManager.instance.GetScore();
+
+        Time.timeScale = 0;
     }
 
     private void SetMessage()
