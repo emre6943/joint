@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &94557179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,7 +421,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1180601008}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 324477734}
   - component: {fileID: 324477733}
   m_Layer: 5
-  m_Name: StartButton
+  m_Name: ReadyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1056,7 +1056,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 890258606}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: StartButton
+        m_MethodName: ReadyButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1817,6 +1817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 1962151013}
+  canvas: {fileID: 1533378348}
+  canvasTutorial: {fileID: 94557178}
 --- !u!4 &890258607
 Transform:
   m_ObjectHideFlags: 0
@@ -1841,7 +1843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 954826787}
   m_Layer: 5
-  m_Name: Scene
+  m_Name: SceneTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2860,7 +2862,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 890258606}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: StartButton
         m_Mode: 1
