@@ -12,6 +12,8 @@ public class Joint : MonoBehaviour
     public List<GameObject> splitted_ashes = new List<GameObject>();
 
     [HideInInspector] public int ashesLeft;
+
+    public GameObject real_ash;
     
     private int top_ash_index = 0;
 
@@ -37,7 +39,7 @@ public class Joint : MonoBehaviour
     {
         GameObject ash = ashes[top_ash_index];
         top_ash_index++;
-        GameObject ashClone = Instantiate(ash, ash.transform.position, Quaternion.identity);     
+        GameObject ashClone = Instantiate(real_ash, ash.transform.position, Quaternion.identity);     
         splitted_ashes.Add(ashClone);
         ash.SetActive(false);
         StartCoroutine(WaitForRb(ashClone, 0.05f));

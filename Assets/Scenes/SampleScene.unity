@@ -2448,6 +2448,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6982972975431089169, guid: f5d5130ca3ec02a42b3412f99d7b1287,
         type: 3}
+      propertyPath: real_ash
+      value: 
+      objectReference: {fileID: 5873197393293396688, guid: b680986df50674d40b69079e1d0b7626,
+        type: 3}
+    - target: {fileID: 6982972975431089169, guid: f5d5130ca3ec02a42b3412f99d7b1287,
+        type: 3}
       propertyPath: ashes.Array.size
       value: 8
       objectReference: {fileID: 0}
