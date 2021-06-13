@@ -31,6 +31,9 @@ public class Joint : MonoBehaviour
         {
             SplitAsh();
         }
+        if (top_ash_index >= 7) {
+            GameManager.instance.GameOver();
+        }
 
         ashesLeft = ashes.Count - top_ash_index;
     }
