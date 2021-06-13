@@ -15,6 +15,8 @@ public class Joint : MonoBehaviour
     
     private int top_ash_index = 0;
 
+    public bool moving_up = false;
+
     private void Awake()
     {
         if (instance == null) instance = this;

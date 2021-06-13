@@ -32,7 +32,8 @@ public class Refresh : MonoBehaviour
             collided = true;
             
             Joint.instance.RefillAsh();
-            
+            Fire.instance.refresh();
+
             Destroy(gameObject);
         }
     }
