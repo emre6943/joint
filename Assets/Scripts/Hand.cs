@@ -29,7 +29,7 @@ public class Hand : MonoBehaviour
         if (cols.Length > 0 && !collided)
         {
             collided = true;
-            GameManager.instance.addPass();
+            GameManager.instance.AddPass();
             HandController.instance.SetHands();
         }
     }

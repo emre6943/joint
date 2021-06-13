@@ -11,15 +11,14 @@ public class Joint : MonoBehaviour
     public List<GameObject> ashes = new List<GameObject>();
     public List<GameObject> splitted_ashes = new List<GameObject>();
 
+    [HideInInspector] public int ashesLeft;
+    
     private int top_ash_index = 0;
-    private int max_ash_number;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(this);
-
-        max_ash_number = ashes.Count;
     }
 
     private void Update()
@@ -28,6 +27,8 @@ public class Joint : MonoBehaviour
         {
             SplitAsh();
         }
+
+        ashesLeft = ashes.Count - top_ash_index;
     }
 
     public void SplitAsh()

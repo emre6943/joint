@@ -21,7 +21,7 @@ public class AshTray : MonoBehaviour
         if (col.gameObject.tag == "Ash")
         {
             Destroy(col.gameObject);
-            GameManager.instance.addAsh();
+            GameManager.instance.AddAsh();
         }
 
     }

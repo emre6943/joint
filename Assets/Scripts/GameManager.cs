@@ -5,24 +5,22 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager instance = null;
-    public int ash;
-    public int pass;
+    [HideInInspector] public int ash;
+    [HideInInspector] public int pass;
+    [HideInInspector] public float currentTime = 0;
+    
+    [HideInInspector] public bool paused;
 
     public int time_weight;
     public int pass_weight;
     public int ash_weight;
 
-    public float start_time;
-
-    public bool paused;
-
-    // Start is called before the first frame update
+    private float start_time;
+    
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
     }
 
     private void Start()
@@ -36,6 +34,8 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
+
+        currentTime += Time.deltaTime;
     }
 
     public void PauseGame()
@@ -44,25 +44,27 @@ public class GameManager : MonoBehaviour
         {
             paused = false;
             Time.timeScale = 1;
+            GUIManager.instance.SetPauseScene(false);
         }
         else
         {
             paused = true;
             Time.timeScale = 0;
+            GUIManager.instance.SetPauseScene(true);
         }
     }
 
-    public void addAsh() 
+    public void AddAsh() 
     {
         ash++;
     }
 
-    public void addPass()
+    public void AddPass()
     {
         pass++;
     }
 
-    public int getScore() 
+    public int GetScore() 
     {
         return (int)(System.Math.Round(Time.time - start_time) * time_weight + (pass * pass_weight) + (ash_weight * ash)); 
     }
