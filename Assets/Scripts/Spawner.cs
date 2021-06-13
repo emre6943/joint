@@ -26,6 +26,8 @@ public class Spawner : MonoBehaviour
 
     public int Level;
     public float respawner_time;
+    public int level_interval;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,15 @@ public class Spawner : MonoBehaviour
         maxX = bottom_right.x - offset;
         minY = bottom_right.y + offset;
         maxY = top_left.y - offset;
+    }
+
+    void Update()
+    {
+        
+        if (Time.time > (level_interval * Level)) {
+            Level += 1;
+            respawner_time -= 0.03f;
+        }
     }
 
     private static float NextFloat(float min, float max)
@@ -76,7 +87,7 @@ public class Spawner : MonoBehaviour
                     Instantiate(health, new Vector3(xPos, yPos, zPos), Quaternion.identity).transform.SetParent(parentTransform);
                     break;
             }
-            yield return new WaitForSeconds(respawner_time / Level);
+            yield return new WaitForSeconds(respawner_time);
         }
     }
 

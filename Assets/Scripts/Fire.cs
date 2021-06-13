@@ -46,10 +46,9 @@ public class Fire : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "SplitLoc" && !Joint.instance.moving_up)
+        if (other.tag == "SplitLoc")
         {
             Ash ash = other.transform.parent.GetComponent<Ash>();
-            Debug.Log(Joint.instance.moving_up);
             if (ash.isConnected)
             {
                 ash.isConnected = false;
