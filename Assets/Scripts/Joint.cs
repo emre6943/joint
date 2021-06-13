@@ -55,6 +55,7 @@ public class Joint : MonoBehaviour
         for (int i = 0; i < ashes.Count; i++)
         {
             if (!ashes[i].activeSelf) ashes[i].SetActive(true);
+            ashes[i].GetComponent<Ash>().isConnected = true;
         }
 
         foreach (var ash in splitted_ashes)
