@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class GUIManager : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class GUIManager : MonoBehaviour
     public Text ashScoreText;
     public Text passScoreText;
     public Text numberAshLeftText;
+    public Text scoreText;
+    public Text messageText;
 
     public GameObject scorePanel;
     public GameObject pauseScene;
+    public GameObject gameOverScene;
 
     private void Awake()
     {
@@ -61,5 +65,24 @@ public class GUIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetGameOver()
+    {
+        scorePanel.SetActive(false);
+        pauseScene.SetActive(false);
+        gameOverScene.SetActive(true);
+        
+        SetMessage();
+
+        scoreText.text = "SCORE: " + GameManager.instance.currentTime + " * " + GameManager.instance.time_weight +
+                         " + " + GameManager.instance.pass + " * "
+                         + GameManager.instance.pass_weight + " + " + GameManager.instance.ash + " * " +
+                         GameManager.instance.ash_weight + " = " + GameManager.instance.GetScore();
+    }
+
+    private void SetMessage()
+    {
+        messageText.text = Messages.messages[UnityEngine.Random.Range(0, Messages.messages.Length)];
     }
 }

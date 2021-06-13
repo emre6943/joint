@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float currentTime = 0;
     
     [HideInInspector] public bool paused;
+    [HideInInspector] public bool gameOver;
 
     public int time_weight;
     public int pass_weight;
@@ -36,6 +37,13 @@ public class GameManager : MonoBehaviour
         }
 
         currentTime += Time.deltaTime;
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
+        GUIManager.instance.SetGameOver();
+        Time.timeScale = 0f;
     }
 
     public void PauseGame()
