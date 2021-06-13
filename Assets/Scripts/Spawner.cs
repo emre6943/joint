@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour
     public GameObject tray;
     public GameObject health;
 
+    public Transform parentTransform;
+
     public int[] nums;
     public int[] randoms;
 
@@ -46,13 +48,13 @@ public class Spawner : MonoBehaviour
             switch (choice) 
             {
                 case 0:
-                    Instantiate(enemy, new Vector3(xPos, yPos, zPos), Quaternion.identity);
+                    Instantiate(enemy, new Vector3(xPos, yPos, zPos), Quaternion.identity).transform.SetParent(parentTransform);
                     break;
                 case 1:
-                    Instantiate(tray, new Vector3(xPos, yPos, zPos), Quaternion.identity);
+                    Instantiate(tray, new Vector3(xPos, yPos, zPos), Quaternion.identity).transform.SetParent(parentTransform);
                     break;
                 default:
-                    Instantiate(health, new Vector3(xPos, yPos, zPos), Quaternion.identity);
+                    Instantiate(health, new Vector3(xPos, yPos, zPos), Quaternion.identity).transform.SetParent(parentTransform);
                     break;
             }
             yield return new WaitForSeconds(respawner_time / Level);

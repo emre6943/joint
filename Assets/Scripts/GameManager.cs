@@ -52,7 +52,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void addAsh() {
+    public void addAsh() 
+    {
         ash++;
     }
 

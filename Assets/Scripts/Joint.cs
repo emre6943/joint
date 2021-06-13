@@ -17,7 +17,7 @@ public class Joint : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
-        else if (instance != this) Destroy(gameObject);
+        else if (instance != this) Destroy(this);
 
         max_ash_number = ashes.Count;
     }

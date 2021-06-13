@@ -270,6 +270,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &922328340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 922328341}
+  m_Layer: 0
+  m_Name: ParentTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &922328341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922328340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4120164, y: 0.39585143, z: -1.4933864}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1160802369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6982972974460636554, guid: f5d5130ca3ec02a42b3412f99d7b1287,
@@ -538,6 +568,7 @@ MonoBehaviour:
   enemy: {fileID: 8090108312712531473, guid: ba07badc996e4b94b95961c5044fa461, type: 3}
   tray: {fileID: 786631867694248133, guid: 99786deb69416cd43bfa0391bb4c6c0b, type: 3}
   health: {fileID: 1993657521634979022, guid: 902d8e1a31fee274984a86d43b013316, type: 3}
+  parentTransform: {fileID: 922328341}
   nums: 
   randoms: 
   xPos: 0
@@ -547,8 +578,8 @@ MonoBehaviour:
   maxX: 20
   minY: 7
   maxY: 11
-  Level: 5
-  respawner_time: 0.2
+  Level: 1
+  respawner_time: 1
 --- !u!61 &2082504825
 BoxCollider2D:
   m_ObjectHideFlags: 0

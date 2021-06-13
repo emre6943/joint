@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HandController : MonoBehaviour
 {
+    [HideInInspector] public static HandController instance;
+    
     public GameObject old_hand;
     public GameObject left_hand;
     public GameObject right_hand;
@@ -13,43 +16,68 @@ public class HandController : MonoBehaviour
     public float yMin;
     public float yMax;
 
-
     private bool left;
 
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(this);
+    }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         float yPos = NextFloat(yMin, yMax);
         old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
         left = false;
     }
 
-    static float NextFloat(float min, float max)
+    private static float NextFloat(float min, float max)
     {
         System.Random random = new System.Random();
         double val = (random.NextDouble() * (max - min) + min);
         return (float)val;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    public void SetHands()
     {
-        if (col.gameObject.tag == "Hand") {
-            Destroy(old_hand);
-            GameManager.instance.addPass();
-            float yPos = NextFloat(yMin, yMax);
+        Destroy(old_hand);
+        float yPos = NextFloat(yMin, yMax);
 
-            if (left)
-            {
-                left = false;
-                old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
-            }
-            else
-            {
-                left = true;
-                old_hand = Instantiate(left_hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
-            }
+        if (left)
+        {
+            left = false;
+            old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
         }
-        
+        else
+        {
+            left = true;
+            old_hand = Instantiate(left_hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
+        }
     }
+    
+    
+    // private bool passed;
+    // void OnTriggerEnter2D(Collider2D col)
+    // {
+    //     if (col.tag == "Hand" && !passed)
+    //     {
+    //         passed = true;
+    //
+    //         Destroy(old_hand);
+    //         
+    //         GameManager.instance.addPass();
+    //         float yPos = NextFloat(yMin, yMax);
+    //
+    //         if (left)
+    //         {
+    //             left = false;
+    //             old_hand = Instantiate(right_hand, new Vector3(xPosRight, yPos, 0), Quaternion.identity);
+    //         }
+    //         else
+    //         {
+    //             left = true;
+    //             old_hand = Instantiate(left_hand, new Vector3(xPosLeft, yPos, 0), Quaternion.identity);
+    //         }
+    //     }
+    // }
 }
