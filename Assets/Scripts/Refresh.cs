@@ -22,7 +22,7 @@ public class Refresh : MonoBehaviour
         int c = 0;
         foreach (var col in cols)
         {
-            if (!col.GetComponent<Ash>().isConnected) c++;
+            if (col.tag == "Ash" && !col.GetComponent<Ash>().isConnected) c++;
         }
 
         if (c == cols.Length) return;
@@ -30,6 +30,8 @@ public class Refresh : MonoBehaviour
         if (cols.Length > 0 && !collided)
         {
             collided = true;
+            
+            AudioManager.instance.PlaySound("weed");
             
             Joint.instance.RefillAsh();
             Fire.instance.refresh();

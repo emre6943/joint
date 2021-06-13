@@ -9,7 +9,7 @@ public static class Messages
     public static string[] messages = new string[]
     {
         "Kids WEED is BAD for you!",
-        "You get HIGH",
+        "You are hIgHhh",
         "HMMMM...",
         "Weed makes you cancer",
         "Did you forget your score xd:)",
@@ -17,6 +17,7 @@ public static class Messages
         "Perfect score :)",
         "Do you remember 1 minute ago?",
         "HAHAHAHAHAHAHAHAH",
+        "xdxdxdxdxd......",
         "Too Bad :("
     };
 }

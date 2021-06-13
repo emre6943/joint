@@ -42,6 +42,7 @@ public class Joint : MonoBehaviour
     {
         GameObject ash = ashes[top_ash_index];
         top_ash_index++;
+        AudioManager.instance.PlaySound("tray");
         GameObject ashClone = Instantiate(real_ash, ash.transform.position, Quaternion.identity);     
         splitted_ashes.Add(ashClone);
         ash.SetActive(false);

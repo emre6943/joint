@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(col.gameObject);
             Destroy(gameObject);
+            AudioManager.instance.PlaySound("water");
         }
 
         if (col.gameObject.tag == "Fire")

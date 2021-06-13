@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver) return;
         
+        AudioManager.instance.StopSound(AudioManager.instance.currentTheme);
+        AudioManager.instance.PlaySound("gameover");
+        
         gameOver = true;
         GUIManager.instance.SetGameOver();
     }
