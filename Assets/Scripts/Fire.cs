@@ -49,7 +49,6 @@ public class Fire : MonoBehaviour
         if (other.tag == "SplitLoc")
         {
             Ash ash = other.transform.parent.GetComponent<Ash>();
-            Debug.Log(Joint.instance.moving_up);
             if (ash.isConnected)
             {
                 ash.isConnected = false;
