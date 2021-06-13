@@ -31,7 +31,7 @@ public class Joint : MonoBehaviour
         {
             SplitAsh();
         }
-        if (top_ash_index >= 7) {
+        if (top_ash_index >= 8) {
             GameManager.instance.GameOver();
         }
 
