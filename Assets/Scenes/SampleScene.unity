@@ -423,7 +423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &300940196
 Transform:
   m_ObjectHideFlags: 0
@@ -530,6 +530,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.0001
   endPosition: {fileID: 1160802369}
+  startPosition: 0
+  startScale: 0
+  scaleX: 0
+  scaleY: 0
 --- !u!50 &300940200
 Rigidbody2D:
   serializedVersion: 4
