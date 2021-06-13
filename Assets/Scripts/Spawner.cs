@@ -13,14 +13,16 @@ public class Spawner : MonoBehaviour
     public int[] nums;
     public int[] randoms;
 
-    public int xPos;
-    public int yPos;
-    public int zPos;
+    public float xPos;
+    public float yPos;
+    public float zPos;
 
-    public int minX;
-    public int maxX;
-    public int minY;
-    public int maxY;
+    public float minX;
+    public float maxX;
+    public float minY;
+    public float maxY;
+
+    public float offset;
 
     public int Level;
     public float respawner_time;
@@ -31,6 +33,23 @@ public class Spawner : MonoBehaviour
         nums = new int[]{0,0,0};
         randoms = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2};
         StartCoroutine(DropChar());
+
+        var top_left = new Vector3(0, (Screen.height * 1.5f), 0);
+        top_left = Camera.main.ScreenToWorldPoint(top_left);
+        var bottom_right = new Vector3(Screen.width, (Screen.height * 1.1f), 0);
+        bottom_right = Camera.main.ScreenToWorldPoint(bottom_right);
+
+        minX = top_left.x + offset;
+        maxX = bottom_right.x - offset;
+        minY = bottom_right.y + offset;
+        maxY = top_left.y - offset;
+    }
+
+    private static float NextFloat(float min, float max)
+    {
+        System.Random random = new System.Random();
+        double val = (random.NextDouble() * (max - min) + min);
+        return (float)val;
     }
 
     IEnumerator DropChar()
@@ -41,8 +60,8 @@ public class Spawner : MonoBehaviour
             int index = Random.Range(0, randoms.Length);
             int choice = randoms[index];
 
-            xPos = Random.Range(minX, maxX + 1);
-            yPos = Random.Range(minY, maxY + 1);
+            xPos = NextFloat(minX, maxX);
+            yPos = NextFloat(minY, maxY);
 
             nums[choice]++;
             switch (choice) 
